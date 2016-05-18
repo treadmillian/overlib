@@ -1,1 +1,11 @@
-}
+//\/////
+//\  overLIB Exclusive Plugin
+//\  This file requires overLIB 4.10 or later.
+//\
+//\  overLIB 4.10 - You may not remove or change this notice.
+//\  Copyright Erik Bosrup 1998-2004. All rights reserved.
+//\  Contributors are listed on the homepage.
+//\  See http://www.bosrup.com/web/overlib/ for details.
+//\/////
+//\  THIS IS A VERY MODIFIED VERSION. DO NOT EDIT OR PUBLISH. GET THE ORIGINAL!
+function setExclusiveVariables(){o3_exclusive=ol_exclusive,o3_exclusivestatus=ol_exclusivestatus}function parseExclusiveExtras(pf,i,ar){var k=i,v;if(olOverrideIsSet=!1,k<ar.length){if(ar[k]==EXCLUSIVEOVERRIDE)return"ol_"!=pf&&(olOverrideIsSet=!0),k;if(ar[k]==EXCLUSIVE)return eval(pf+"exclusive = ("+pf+"exclusive == 0) ? 1 : 0"),k;if(ar[k]==EXCLUSIVESTATUS)return eval(pf+"exclusivestatus = '"+escSglQuote(ar[++k])+"'"),k}return-1}function isExclusive(e){var s=!1;return null!=e&&(s=hasCommand(e,EXCLUSIVEOVERRIDE)),s?!1:(self.status=o3_exclusive?o3_exclusivestatus:"",o3_exclusive)}function hasCommand(e,s){for(var i=!1,r=0;r<e.length;r++)if("number"==typeof e[r]&&e[r]==s){i=!0;break}return i}function clearExclusive(){o3_exclusive=0}function setExclusive(){o3_exclusive=o3_showingsticky&&o3_exclusive}function chkForExclusive(){return olOverrideIsSet&&(o3_exclusive=0),!0}if("undefined"!=typeof olInfo&&"undefined"!=typeof olInfo.meets&&olInfo.meets(4.1)){registerCommands("exclusive,exclusivestatus,exclusiveoverride");var olOverrideIsSet;if("undefined"==typeof ol_exclusive)var ol_exclusive=0;if("undefined"==typeof ol_exclusivestatus)var ol_exclusivestatus="Please close open popup first.";var o3_exclusive=0,o3_exclusivestatus="";registerRunTimeFunction(setExclusiveVariables),registerCmdLineFunction(parseExclusiveExtras),registerPostParseFunction(chkForExclusive),registerHook("createPopup",setExclusive,FBEFORE),registerHook("hideObject",clearExclusive,FAFTER),olInfo.meets(4.1)&&registerNoParameterCommands("exclusive")}else alert("overLIB 4.10 or later is required for the Debug Plugin.");
