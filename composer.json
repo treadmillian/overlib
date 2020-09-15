@@ -1,0 +1,8 @@
+{
+    "description": "overlib",
+    "license": "GPL 2.0",
+    "type": "ree-js-module",
+    "name": "treadmillian/overlib",
+    "type": "library",
+    "require": { }
+}
